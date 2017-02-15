@@ -1,12 +1,16 @@
 # Architecture Guidelines
 
-The architecture of our Android apps is based on the [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) (Model View Presenter) pattern.
+A arquitetura de nossa aplicação Android é baseado no [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) (Model View Presenter) pattern.
 
-* __View (UI layer)__: this is where Activities, Fragments and other standard Android components live. It's responsible for displaying the data received from the presenters to the user. It also handles user interactions and inputs (click listeners, etc) and triggers the right action in the Presenter if needed.
+* __View (UI layer)__: Este é o local onde Activities, Fragments e outros componentes Android vivem. Sua responsabilidade é mostrar dados fornecidos pela presenter para o usuário. A View também controla as interações do usuário, tais como click listeners, acionando a ação correta da presenter se necessário.
 
-* __Presenter__: presenters subscribe to RxJava Observables provided by the `DataManager`. They are in charge of handling the subscription lifecycle, analysing/modifying the data returned by the `DataManager` and calling the appropriate methods in the View in order to display the data.
+* __Presenter__: Responde as ações da UI controlando a interação entre a View e o Model, solicitando as regras de negócias para um ou mais UseCase/Interactor utilizando subscribe de RxJava para controle de qual método da view será acionado para exibição dos dados.
 
-* __Model (Data Layer)__: this is responsible for retrieving, saving, caching and massaging data. It can communicate with local databases and other data stores as well as with restful APIs or third party SDKs. It is divided in two parts: a group of helpers and a `DataManager`. The number of helpers vary between project and each of them has a very specific function, e.g. talking to an API or saving data in `SharedPreferences`. The `DataManager` combines and transforms the outputs from different helpers using Rx operators so it can: 1) provide meaningful data to the Presenter,  2) group actions that will always happen together. This layer also contains the actual model classes that define how the data structure is.
+* __Model (Data Layer)__: É reponsável por salvar, recuperar/listar dados de um banco de dados local ou banco na nuvem (Firebase). Também pode representar o consumo de uma API Restful.
+
+* __Model (Domain Layer)__: Representa as regras de negócios, acionados pela presenter via subscribe para gravar e/ou recuperar/listar os dados com Observables do RxJava
+
+this is responsible for retrieving, saving, caching and massaging data. It can communicate with local databases and other data stores as well as with restful APIs or third party SDKs. It is divided in two parts: a group of helpers and a `DataManager`. The number of helpers vary between project and each of them has a very specific function, e.g. talking to an API or saving data in `SharedPreferences`. The `DataManager` combines and transforms the outputs from different helpers using Rx operators so it can: 1) provide meaningful data to the Presenter,  2) group actions that will always happen together. This layer also contains the actual model classes that define how the data structure is.
 
 ![](architecture_diagram.png)
 
