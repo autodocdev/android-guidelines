@@ -1,6 +1,6 @@
 # Android Guidelines
 
-List of guidelines that we use at [ribot](http://ribot.co.uk) when developing for the __Android__ platform. 
+Lista of guidelines que nós usamos na [autodoc](http://www.autodoc.com.br) quando desenvolvemos para plataforma __Android__. 
 
 * [Project and code style guidelines](project_and_code_guidelines.md)
 * [Architecture Guidelines](architecture_guidelines/android_architecture.md)
@@ -8,7 +8,7 @@ List of guidelines that we use at [ribot](http://ribot.co.uk) when developing fo
 ### License
 
 ```
-Copyright 2015 Ribot Ltd.
+Copyright 2017 Autodoc Ltd.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
