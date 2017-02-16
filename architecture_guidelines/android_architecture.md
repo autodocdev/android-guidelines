@@ -8,9 +8,7 @@ A arquitetura de nossa aplicação Android é baseado no [MVP](https://en.wikipe
 
 * __Model (Data Layer)__: É reponsável por salvar, recuperar/listar dados de um banco de dados local ou banco na nuvem (Firebase). Também pode representar o consumo de uma API Restful.
 
-* __Model (Domain Layer)__: Representa as regras de negócios, acionados pela presenter via subscribe para gravar e/ou recuperar/listar os dados com Observables do RxJava
-
-this is responsible for retrieving, saving, caching and massaging data. It can communicate with local databases and other data stores as well as with restful APIs or third party SDKs. It is divided in two parts: a group of helpers and a `DataManager`. The number of helpers vary between project and each of them has a very specific function, e.g. talking to an API or saving data in `SharedPreferences`. The `DataManager` combines and transforms the outputs from different helpers using Rx operators so it can: 1) provide meaningful data to the Presenter,  2) group actions that will always happen together. This layer also contains the actual model classes that define how the data structure is.
+* __Model (Domain Layer)__: Representa as regras de negócios, acionados pela presenter via subscribe para gravar e/ou recuperar/listar os dados com Observables do RxJava.
 
 ![](architecture_diagram.png)
 
@@ -23,9 +21,9 @@ Looking at the diagram from right to left:
 
 * __Data Manager (Model)__: It's a key part of the architecture. It keeps a reference to every helper class and uses them to satisfy the requests coming from the presenters. Its methods make extensive use of Rx operators to combine, transform or filter the output coming from the helpers in order to generate the desired output ready for the Presenters. It returns observables that emit data models.
 
-* __Presenters__: Subscribe to observables provided by the `DataManager` and process the data in order to call the right method in the View.
+* __Presenters__: Subscribe em observables providos pelo `UseCase` e processa os dados para ordem de chamada dos métodos da view.
 
-* __Activities, Fragments, ViewGroups (View)__: Standard Android components that implement a set of methods that the Presenters can call. They also handle user interactions such as clicks and act accordingly by calling the appropriate method in the Presenter. These components also implement framework-related tasks such us managing the Android lifecycle, inflating views, etc.
+* __Activities, Fragments, ViewGroups (View)__:  Componentes padrão do Android que implementam métodos que a presenter podem chamar. Eles também controlam as interações do usuários como click do usuário, chamando os métodos correspondentes da presenter.
 
 * __Event Bus__: It allows the View components to be notified of certain types of events that happen in the Model. Generally the  `DataManager` posts events which can then be subscribed to by Activities and Fragments. The event bus is __only used for very specific actions__ that are not related to only one screen and have a broadcasting nature, e.g. the user has signed out.
 
