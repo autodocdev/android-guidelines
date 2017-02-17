@@ -1,6 +1,6 @@
 # Android Guidelines
 
-Lista of guidelines que nós usamos na [autodoc](http://www.autodoc.com.br) quando desenvolvemos para plataforma __Android__. 
+Lista de guidelines que nós usamos na [autodoc](http://www.autodoc.com.br) quando desenvolvemos para plataforma __Android__. 
 
 * [Project and code style guidelines](project_and_code_guidelines.md)
 * [Architecture Guidelines](architecture_guidelines/android_architecture.md)
