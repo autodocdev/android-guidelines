@@ -2,7 +2,7 @@
 
 A arquitetura de nossa aplicação Android é baseado no [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) (Model View Presenter) pattern.
 
-![](architecture_diagram.png)
+![](clean_architecture_layers.png)
 
 * __Presentantion Layer__:
 	- __Presenter__: Subscribe em observables providos pelo `UseCase` e processa os dados para ordem de chamada dos métodos da view.
@@ -15,6 +15,7 @@ A arquitetura de nossa aplicação Android é baseado no [MVP](https://en.wikipe
 * __Data Layer__:
 	- __Repository__: É reponsável por salvar, recuperar/listar dados de um banco de dados local ou banco na nuvem (Firebase). Também pode representar o consumo de uma API Restful.
 
+![](architecture_diagram.png)
 
 # License
 
