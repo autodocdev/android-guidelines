@@ -22,7 +22,7 @@ A arquitetura de nossa aplicação Android é baseado no [MVP](https://en.wikipe
 
 * __View__: A view representa uma Activity, fragment ou ViewGroup que interage diretamente com o Presenter através de ações do usuários tais como click listeners, exibindo informações corretas para usuário dependendo da execução do método da Presenter. A View permanece o mais "burra" possível, conhecendo apenas componentes de View e o Presenter.
 
-* __Presenter__: É de responsabilidade do Presenter o controle do ciclo de vida das assinaturas(Subscrivbe) e processar os dados para chamada correta dos métodos da view. O Presenter não conhece componentes específicos do Android, como por exemplo o Context.
+* __Presenter__: É de responsabilidade do Presenter o controle do ciclo de vida das assinaturas(Subscribe) e processar os dados para chamada correta dos métodos da view. O Presenter não conhece componentes específicos do Android, como por exemplo o Context.
 
 * __Domain Use Case__: Representam as regras de negócios. Cada regra de negócio é um UseCase que retorna um Observable para o Subscribe realizado na Presenter. O UseCase executa o método do Repository que retornará os dados corretos.
 
