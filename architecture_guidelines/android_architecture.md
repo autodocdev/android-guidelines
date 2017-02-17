@@ -31,7 +31,7 @@ A arquitetura de nossa aplicação Android é baseado no [MVP](https://en.wikipe
 # License
 
 ```
-Copyright 2015 Ribot Ltd.
+Copyright 2017 Autodoc Ltd.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
