@@ -1,6 +1,6 @@
 # Architecture Guidelines
 
-A arquitetura de nossa aplicação Android é baseado no [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) (Model View Presenter) pattern.
+A arquitetura de nossa aplicação Android é baseado no [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) (Model View Presenter) pattern e Clean Architecture.
 
 ## Architectural approach
 ![](clean_architecture_layers.png)
