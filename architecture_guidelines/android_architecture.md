@@ -11,7 +11,7 @@ A arquitetura de nossa aplicação Android é baseado no [MVP](https://en.wikipe
 	- __View__:  Componentes padrão do Android que implementam métodos que a presenter podem chamar. Eles também controlam as interações do usuários como click do usuário, chamando os métodos correspondentes da presenter.
 	
 * __Domain Layer__:
-	- __Domain Use Case__: Representa as regras de negócios, acionados pela presenter via subscribe para gravar e/ou recuperar/listar os dados com Observables do RxJava.
+	- __Domain Use Case/Interactor__: Representa as regras de negócios, acionados pela presenter via subscribe para gravar e/ou recuperar/listar os dados com Observables do RxJava.
 	
 * __Data Layer__:
 	- __Repository__: É reponsável por salvar, recuperar/listar dados de um banco de dados local ou banco na nuvem (Firebase). Também pode representar o consumo de uma API Restful.
