@@ -2,22 +2,22 @@
 
 ## 1.1 Project structure
 
-New projects should follow the Android Gradle project structure that is defined on the [Android Gradle plugin user guide](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Project-Structure). The [ribot Boilerplate](https://github.com/ribot/android-boilerplate) project is a good reference to start from.
+Novos projetos devem seguir a estrutura Gradle Android que é definida no [Android Gradle plugin user guide](http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Project-Structure).
 
 ## 1.2 File naming
 
 ### 1.2.1 Class files
-Class names are written in [UpperCamelCase](http://en.wikipedia.org/wiki/CamelCase).
+Nome de classes são escritos em [UpperCamelCase](http://en.wikipedia.org/wiki/CamelCase).
 
-For classes that extend an Android component, the name of the class should end with the name of the component; for example: `SignInActivity`, `SignInFragment`, `ImageUploaderService`, `ChangePasswordDialog`.
+Para classes que extendem um componente do Android, o nome da classe deve terminar com o nome do componente; por exemplo: `SignInActivity`, `SignInFragment`, `ImageUploaderService`, `ChangePasswordDialog`.
 
 ### 1.2.2 Resources files
 
-Resources file names are written in __lowercase_underscore__.
+Resources file names são escritos em __lowercase_underscore__.
 
 #### 1.2.2.1 Drawable files
 
-Naming conventions for drawables:
+Conversões de nomenclatura para drawables:
 
 
 | Asset Type   | Prefix            |		Example               |
@@ -31,7 +31,7 @@ Naming conventions for drawables:
 | Notification | `notification_`	| `notification_bg.9.png`     |
 | Tabs         | `tab_`            | `tab_pressed.9.png`         |
 
-Naming conventions for icons (taken from [Android iconography guidelines](http://developer.android.com/design/style/iconography.html)):
+Conversões de nomenclatura para icons (tirado de [Android iconography guidelines](http://developer.android.com/design/style/iconography.html)):
 
 | Asset Type                      | Prefix             | Example                      |
 | --------------------------------| ----------------   | ---------------------------- |
@@ -42,7 +42,7 @@ Naming conventions for icons (taken from [Android iconography guidelines](http:/
 | Tab icons                       | `ic_tab`           | `ic_tab_recent.png`          |
 | Dialog icons                    | `ic_dialog`        | `ic_dialog_info.png`         |
 
-Naming conventions for selector states:
+Convensões de nomenclatura para selector states:
 
 | State	       | Suffix          | Example                     |
 |--------------|-----------------|-----------------------------|
@@ -55,7 +55,7 @@ Naming conventions for selector states:
 
 #### 1.2.2.2 Layout files
 
-Layout files should match the name of the Android components that they are intended for but moving the top level component name to the beginning. For example, if we are creating a layout for the `SignInActivity`, the name of the layout file should be `activity_sign_in.xml`.
+Os arquivos de layout devem corresponder ao nome dos componentes do Android para os quais eles se destinam, mas movendo o nome do componente para o ínicio. Por exemplo, se estivermos criando um layout para o `SignInActivity`, o nome do arquivo de layout deve ser` activity_sign_in.xml`.
 
 | Component        | Class Name             | Layout Name                   |
 | ---------------- | ---------------------- | ----------------------------- |
@@ -65,19 +65,19 @@ Layout files should match the name of the Android components that they are inten
 | AdapterView item | ---                    | `item_person.xml`             |
 | Partial layout   | ---                    | `partial_stats_bar.xml`       |
 
-A slightly different case is when we are creating a layout that is going to be inflated by an `Adapter`, e.g to populate a `ListView`. In this case, the name of the layout should start with `item_`.
+Um caso ligeiramente diferente é quando estamos criando um layout que vai ser inflado por um `Adapter`, por exemplo, para preencher um` ListView`. Neste caso, o nome do layout deve começar com `item_`.
 
-Note that there are cases where these rules will not be possible to apply. For example, when creating layout files that are intended to be part of other layouts. In this case you should use the prefix `partial_`.
+Observe que há casos em que essas regras não serão possíveis de aplicar. Por exemplo, ao criar arquivos de layout que se destinam a fazer parte de outros layouts. Neste caso, você deve usar o prefixo `partial_`.
 
 #### 1.2.2.3 Menu files
 
-Similar to layout files, menu files should match the name of the component. For example, if we are defining a menu file that is going to be used in the `UserActivity`, then the name of the file should be `activity_user.xml`
+Semelhante aos arquivos de layout, os arquivos de menu devem corresponder ao nome do componente. Por exemplo, se estivermos definindo um arquivo de menu que vai ser usado no `UserActivity`, então o nome do arquivo deve ser` activity_user.xml`.
 
-A good practice is to not include the word `menu` as part of the name because these files are already located in the `menu` directory.
+Uma boa prática é não incluir a palavra `menu` como parte do nome porque esses arquivos já estão localizados no diretório` menu`.
 
 #### 1.2.2.4 Values files
 
-Resource files in the values folder should be __plural__, e.g. `strings.xml`, `styles.xml`, `colors.xml`, `dimens.xml`, `attrs.xml`
+Resource files da pasta values devem ser __plural__, e.g. `strings.xml`, `styles.xml`, `colors.xml`, `dimens.xml`, `attrs.xml`
 
 # 2 Code guidelines
 
