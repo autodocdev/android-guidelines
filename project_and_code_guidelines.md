@@ -83,9 +83,9 @@ Resource files da pasta values devem ser __plural__, e.g. `strings.xml`, `styles
 
 ## 2.1 Java language rules
 
-### 2.1.1 Don't ignore exceptions
+### 2.1.1 Não ignore exceptions
 
-You must never do the following:
+Você nunca deve fazer o seguinte:
 
 ```java
 void setServerPort(String value) {
@@ -95,13 +95,13 @@ void setServerPort(String value) {
 }
 ```
 
-_While you may think that your code will never encounter this error condition or that it is not important to handle it, ignoring exceptions like above creates mines in your code for someone else to trip over some day. You must handle every Exception in your code in some principled way. The specific handling varies depending on the case._ - ([Android code style guidelines](https://source.android.com/source/code-style.html))
+_Enquanto você pode pensar que seu código nunca irá encontrar esta condição de erro ou que não é importante para lidar com isso, ignorando exceções como acima cria "minas/armadilhas" em seu código para alguém tropeçar em algum dia. Você deve lidar com todas as exceções no seu código de alguma maneira com princípios. A manipulação específica varia de acordo com o caso._ - ([Android code style guidelines](https://source.android.com/source/code-style.html))
 
-See alternatives [here](https://source.android.com/source/code-style.html#dont-ignore-exceptions).
+Veja alternativas [aqui](https://source.android.com/source/code-style.html#dont-ignore-exceptions).
 
-### 2.1.2 Don't catch generic exception
+### 2.1.2 Não utilize a Exception generica
 
-You should not do this:
+Você não deve fazer isso:
 
 ```java
 try {
@@ -114,31 +114,31 @@ try {
 }
 ```
 
-See the reason why and some alternatives [here](https://source.android.com/source/code-style.html#dont-catch-generic-exception)
+Veja o porque e algumas alternativas [aqui](https://source.android.com/source/code-style.html#dont-catch-generic-exception)
 
 ### 2.1.3 Don't use finalizers
 
-_We don't use finalizers. There are no guarantees as to when a finalizer will be called, or even that it will be called at all. In most cases, you can do what you need from a finalizer with good exception handling. If you absolutely need it, define a `close()` method (or the like) and document exactly when that method needs to be called. See `InputStream` for an example. In this case it is appropriate but not required to print a short log message from the finalizer, as long as it is not expected to flood the logs._ - ([Android code style guidelines](https://source.android.com/source/code-style.html#dont-use-finalizers))
+_Não usamos finalizers. Não há garantias quanto a quando um finalizer será chamado, ou mesmo que ele será chamado em tudo. Na maioria dos casos, você pode fazer o que você precisa de um finalizer com uma boa manipulação de exception. Se você absolutamente precisar dele, defina um método `close ()` (ou similar) e documente exatamente quando esse método precisa ser chamado. Veja `InputStream` para um exemplo. Nesse caso, é apropriado, mas não é necessário imprimir uma mensagem de log curto do finalizador, desde que não se espere que inunde os logs._ - ([Android code style guidelines](https://source.android.com/source/code-style.html#dont-use-finalizers))
 
 
 ### 2.1.4 Fully qualify imports
 
-This is bad: `import foo.*;`
+Isso é ruim: `import foo.*;`
 
-This is good: `import foo.Bar;`
+Isso é bom: `import foo.Bar;`
 
-See more info [here](https://source.android.com/source/code-style.html#fully-qualify-imports)
+Veja mais informações [aqui](https://source.android.com/source/code-style.html#fully-qualify-imports)
 
 ## 2.2 Java style rules
 
-### 2.2.1 Fields definition and naming
+### 2.2.1 Definição de campos e nomenclatura
 
-Fields should be defined at the __top of the file__ and they should follow the naming rules listed below.
+Campos devem ser definidos no __começo do arquivo__ e eles devem ser as regras de nomenclatura a seguir.
 
-* Private, non-static field names start with __m__.
-* Private, static field names start with __s__.
-* Other fields start with a lower case letter.
-* Static final fields (constants) are ALL_CAPS_WITH_UNDERSCORES.
+* Nome de campos: Private, non-static começam com __m__.
+* Nome de campos: Private, static field começam com __s__.
+* Outros campos começam com letras lower case.
+* Campos Static final (constants) são ALL_CAPS_WITH_UNDERSCORES.
 
 Example:
 
@@ -153,18 +153,18 @@ public class MyClass {
 }
 ```
 
-### 2.2.3 Treat acronyms as words
+### 2.2.3 Trate acrônimos como palavras
 
-| Good           | Bad            |
+| Bom           | Ruim            |
 | -------------- | -------------- |
 | `XmlHttpRequest` | `XMLHTTPRequest` |
 | `getCustomerId`  | `getCustomerID`  |
 | `String url`     | `String URL`     |
 | `long id`        | `long ID`        |
 
-### 2.2.4 Use spaces for indentation
+### 2.2.4 Use espaço para identação
 
-Use __4 space__ indents for blocks:
+Use __4 espaços__ para identação de blocos:
 
 ```java
 if (x == 1) {
@@ -172,16 +172,16 @@ if (x == 1) {
 }
 ```
 
-Use __8 space__ indents for line wraps:
+Use __8 space__ para identação de linhas quebradas:
 
 ```java
 Instrument i =
         someLongExpression(that, wouldNotFit, on, one, line);
 ```
 
-### 2.2.5 Use standard brace style
+### 2.2.5 Use o padrão de abertura de chaves
 
-Braces go on the same line as the code before them.
+As aberturas de chaves seguem a linha do código atual.
 
 ```java
 class MyClass {
@@ -197,15 +197,15 @@ class MyClass {
 }
 ```
 
-Braces around the statements are required unless the condition and the body fit on one line.
+Aberturas de chaves são requiridas a menos que a condição e o corpo do código caibam em uma linha.
 
-If the condition and the body fit on one line and that line is shorter than the max line length, then braces are not required, e.g.
+Se a condição e o corpo cabem em uma linha e a linhas é menor que o tamanho máximo da linhas, então a chave não é requerida, e.g.
 
 ```java
 if (condition) body();
 ```
 
-This is __bad__:
+Isso é __ruim__:
 
 ```java
 if (condition)
@@ -214,21 +214,29 @@ if (condition)
 
 ### 2.2.6 Annotations
 
-#### 2.2.6.1 Annotations practices
+#### 2.2.6.1 Praticas de Annotations
 
-According to the Android code style guide, the standard practices for some of the predefined annotations in Java are:
+De acordo com o Android code style code, as praticas padões para algumas annotations predefinidas em java são:
 
-* `@Override`: The @Override annotation __must be used__ whenever a method overrides the declaration or implementation from a super-class. For example, if you use the @inheritdocs Javadoc tag, and derive from a class (not an interface), you must also annotate that the method @Overrides the parent class's method.
+* `@Override`: A annotation @Override __deve ser usada__ sempre que um metodo overrides a declaração ou implementação da super-class. 
 
-* `@SuppressWarnings`: The @SuppressWarnings annotation should only be used under circumstances where it is impossible to eliminate a warning. If a warning passes this "impossible to eliminate" test, the @SuppressWarnings annotation must be used, so as to ensure that all warnings reflect actual problems in the code.
+* `@SuppressWarnings`: A @SuppressWarnings annotation deve ser usada somente sobre circunstancia onde é impossível eliminar o warning.
 
-More information about annotation guidelines can be found [here](http://source.android.com/source/code-style.html#use-standard-java-annotations).
+Quando a annotation `@SuppressWarnings` é necessária o código deve ser anotado com um comentário TODO com a explicação do porque foi impossível eliminar o `@SuppressWarnings`, e.g.
+
+```java
+// TODO: The third-party class com.third.useful.Utility.rotate() needs generics
+@SuppressWarnings("generic-cast")
+List<String> blix = Utility.rotate(blax);
+```
+
+Mais informações sobre annotation guidelines podem ser encontradas [aqui](http://source.android.com/source/code-style.html#use-standard-java-annotations).
 
 #### 2.2.6.2 Annotations style
 
-__Classes, Methods and Constructors__
+__Classes, Metodos e Construtores__
 
-When annotations are applied to a class, method, or constructor, they are listed after the documentation block and should appear as __one annotation per line__ .
+Quando annotations são aplicata em uma classe, metodo, ou construtor, eles são listados após o bloco de documentação e devem aparecer como __uma annotation por linha__ .
 
 ```java
 /* This is the documentation block about the class */
@@ -237,9 +245,9 @@ When annotations are applied to a class, method, or constructor, they are listed
 public class MyAnnotatedClass { }
 ```
 
-__Fields__
+__Campos__
 
-Annotations applying to fields should be listed __on the same line__, unless the line reaches the maximum line length.
+Annotations aplicadas em campos devem ser listadas __na mesma linha__, a menos que a linha atinga o limite máximo de tamanho.
 
 ```java
 @Nullable @Mock DataManager mDataManager;
