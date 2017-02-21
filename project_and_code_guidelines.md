@@ -253,33 +253,33 @@ Annotations aplicadas em campos devem ser listadas __na mesma linha__, a menos q
 @Nullable @Mock DataManager mDataManager;
 ```
 
-### 2.2.7 Limit variable scope
+### 2.2.7  Limitar o escopo da variável
 
-_The scope of local variables should be kept to a minimum (Effective Java Item 29). By doing so, you increase the readability and maintainability of your code and reduce the likelihood of error. Each variable should be declared in the innermost block that encloses all uses of the variable._
+_O escopo das variáveis locais deve ser mantido ao mínimo (Item Java Eficaz 29). Ao fazer isso, você aumenta a legibilidade e a capacidade de manutenção do seu código e reduz a probabilidade de erro._
 
-_Local variables should be declared at the point they are first used. Nearly every local variable declaration should contain an initializer. If you don't yet have enough information to initialize a variable sensibly, you should postpone the declaration until you do._ - ([Android code style guidelines](https://source.android.com/source/code-style.html#limit-variable-scope))
+_As variáveis locais devem ser declaradas no ponto em que são usadas pela primeira vez. Quase todas as declarações de variáveis locais devem conter um inicializador. Se ainda não tiver informações suficientes para inicializar uma variável de forma sensata, deverá adiar a declaração._ - ([Android code style guidelines](https://source.android.com/source/code-style.html#limit-variable-scope))
 
 ### 2.2.8 Order import statements
 
-If you are using an IDE such as Android Studio, you don't have to worry about this because your IDE is already obeying these rules. If not, have a look below.
+Se você estiver usando uma IDE como o Android Studio, não precisa se preocupar com isso porque sua IDE já está obedecendo a essas regras. Se não, dê uma olhada abaixo.
 
-The ordering of import statements is:
+A ordem das declarações de importação é:
 
 1. Android imports
-2. Imports from third parties (com, junit, net, org)
+2. Importação de terceiros (com, junit, net, org)
 3. java and javax
-4. Same project imports
+4. Importações do mesmo projeto
 
-To exactly match the IDE settings, the imports should be:
+Para corresponder exatamente às configurações IDE, as importações devem ser:
 
-* Alphabetically ordered within each grouping, with capital letters before lower case letters (e.g. Z before a).
-* There should be a blank line between each major grouping (android, com, junit, net, org, java, javax).
+* Ordem alfabética dentro de cada agrupamento, com letras maiúsculas antes de letras minúsculas (por exemplo, Z antes de a).
+* Deve haver uma linha em branco entre cada grande agrupamento (android, com, junit, net, org, java, javax).
 
-More info [here](https://source.android.com/source/code-style.html#limit-variable-scope)
+Mais informações [here](https://source.android.com/source/code-style.html#limit-variable-scope)
 
 ### 2.2.9 Logging guidelines
 
-Use the logging methods provided by the `Log` class to print out error messages or other information that may be useful for developers to identify issues:
+Use os métodos de log fornecidos pela classe `Log` para imprimir mensagens de erro ou outras informações que podem ser úteis para os desenvolvedores identificarem problemas:
 
 * `Log.v(String tag, String msg)` (verbose)
 * `Log.d(String tag, String msg)` (debug)
@@ -287,7 +287,7 @@ Use the logging methods provided by the `Log` class to print out error messages 
 * `Log.w(String tag, String msg)` (warning)
 * `Log.e(String tag, String msg)` (error)
 
-As a general rule, we use the class name as tag and we define it as a `static final` field at the top of the file. For example:
+Como regra geral, usamos o nome da classe como tag e o definimos como um campo `static final` na parte superior do arquivo. Por exemplo:
 
 ```java
 public class MyClass {
@@ -299,17 +299,17 @@ public class MyClass {
 }
 ```
 
-VERBOSE and DEBUG logs __must__ be disabled on release builds. It is also recommended to disable INFORMATION, WARNING and ERROR logs but you may want to keep them enabled if you think they may be useful to identify issues on release builds. If you decide to leave them enabled, you have to make sure that they are not leaking private information such as email addresses, user ids, etc.
+Logs VERBOSE e DEBUG devem ser desabilitados no build releas. Também é recomendado desabilitar os logs de INFORMATION, WARNING e ERROR, mas você pode manter isso habilitado se você acha que pode ser útil para identificar problemas no build release. Se você decidir deixar eles habilitados, você tem que ter certeza que eles não estão vazando informações privadas, como endereço de email, id de usuário, etc.
 
-To only show logs on debug builds:
+Para mostrar logs somente em build debug:
 
 ```java
 if (BuildConfig.DEBUG) Log.d(TAG, "The value of x is " + x);
 ```
 
-### 2.2.10 Class member ordering
+### 2.2.10 Ordenação de membros da classe
 
-There is no single correct solution for this but using a __logical__ and __consistent__ order will improve code learnability and readability. It is recommendable to use the following order:
+Não existe uma única solução para isso, mas usando uma ordenação __lógica__ e __consistente__ irá melhorar a capacidade de aprendizado e legibilidade do código. É recomendável usar a seguinte ordem:
 
 1. Constants
 2. Fields
@@ -347,7 +347,7 @@ public class MainActivity extends Activity {
 }
 ```
 
-If your class is extending an __Android component__ such as an Activity or a Fragment, it is a good practice to order the override methods so that they __match the component's lifecycle__. For example, if you have an Activity that implements `onCreate()`, `onDestroy()`, `onPause()` and `onResume()`, then the correct order is:
+Se sua classe extends de algum __componente do Android__ como Activity ou Fragment, é boa praticar ordenar os métodos override equivalente ao __ciclo de vida do componente__. Por exemplo, se você tem uma Activity que implementa `onCreate()`, `onDestroy()`, `onPause()` and `onResume()`, então a ordenação correta é:
 
 ```java
 public class MainActivity extends Activity {
@@ -368,19 +368,19 @@ public class MainActivity extends Activity {
 }
 ```
 
-### 2.2.11 Parameter ordering in methods
+### 2.2.11 Ordenação de parâmetro de métodos 
 
-When programming for Android, it is quite common to define methods that take a `Context`. If you are writing a method like this, then the __Context__ must be the __first__ parameter.
+Programando em Android, é comum definir métodos que levam o `Context` como parâmetro. Se você esta escrevendo um método como esse, então o __Context__ deve ser o primeiro parâmetro.
 
-The opposite case are __callback__ interfaces that should always be the __last__ parameter.
+A exceção é na utilização de interfaces __callback__ que devem sempre ser o __último__ parâmetro
 
-Examples:
+Examplos:
 
 ```java
-// Context always goes first
+// Context sempre é o primeiro
 public User loadUser(Context context, int userId);
 
-// Callbacks always go last
+// Callbacks sempre é o último
 public void loadUserAsync(Context context, int userId, UserCallback callback);
 ```
 
