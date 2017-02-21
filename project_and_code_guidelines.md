@@ -347,7 +347,7 @@ public class MainActivity extends Activity {
 }
 ```
 
-Se sua classe extends de algum __componente do Android__ como Activity ou Fragment, é boa praticar ordenar os métodos override equivalente ao __ciclo de vida do componente__. Por exemplo, se você tem uma Activity que implementa `onCreate()`, `onDestroy()`, `onPause()` and `onResume()`, então a ordenação correta é:
+Se sua classe extends de algum __componente do Android__ como Activity ou Fragment, é boa pratica ordenar os métodos override equivalente ao __ciclo de vida do componente__. Por exemplo, se você tem uma Activity que implementa `onCreate()`, `onDestroy()`, `onPause()` and `onResume()`, então a ordenação correta é:
 
 ```java
 public class MainActivity extends Activity {
@@ -386,11 +386,11 @@ public void loadUserAsync(Context context, int userId, UserCallback callback);
 
 ### 2.2.13 String constants, naming, and values
 
-Many elements of the Android SDK such as `SharedPreferences`, `Bundle`, or `Intent` use a key-value pair approach so it's very likely that even for a small app you end up having to write a lot of String constants.
+Muitos elementos do SDK do Android como `SharedPreferences`, `Bundle`, ou `Intent` usam par de chave-valor, por isso é muito provável que mesmo para um pequeno aplicativo que você acaba escrevendo um monte de constantes String. 
 
-When using one of these components, you __must__ define the keys as a `static final` fields and they should be prefixed as indicated below.
+Ao usar um desses componentes, você deve definir as chaves como campos `static final` e eles devem ser prefixados conforme indicado abaixo.
 
-| Element            | Field Name Prefix |
+| Elemento            | Prefix do nome de campo |
 | -----------------  | ----------------- |
 | SharedPreferences  | `PREF_`             |
 | Bundle             | `BUNDLE_`           |
@@ -398,27 +398,28 @@ When using one of these components, you __must__ define the keys as a `static fi
 | Intent Extra       | `EXTRA_`            |
 | Intent Action      | `ACTION_`           |
 
-Note that the arguments of a Fragment - `Fragment.getArguments()` - are also a Bundle. However, because this is a quite common use of Bundles, we define a different prefix for them.
+Note que os argumentos de um Fragment - `Fragment.getArguments()` - também são um Bundle. Entretando, como é muito comum o uso de Bundles, nós definimos um prefixo diferente para eles.
 
-Example:
+Examplo:
 
 ```java
-// Note the value of the field is the same as the name to avoid duplication issues
+// Observe que o valor do campo é igual ao nome para evitar problemas de duplicação
 static final String PREF_EMAIL = "PREF_EMAIL";
 static final String BUNDLE_AGE = "BUNDLE_AGE";
 static final String ARGUMENT_USER_ID = "ARGUMENT_USER_ID";
 
-// Intent-related items use full package name as value
+// Itens relacionados à intent usam o nome do pacote completo como valor
 static final String EXTRA_SURNAME = "com.myapp.extras.EXTRA_SURNAME";
 static final String ACTION_OPEN_USER = "com.myapp.action.ACTION_OPEN_USER";
 ```
 
-### 2.2.14 Arguments in Fragments and Activities
+### 2.2.14 Argumentos em Fragments e Activities
 
-When data is passed into an `Activity `or `Fragment` via an `Intent` or a `Bundle`, the keys for the different values __must__ follow the rules described in the section above.
+Quando um dado é passado para uma `Activity` ou `Fragment` via `Intent` ou um `Bundle`, as chaves para os diferentes valores devem seguir as seguintes regras descritas abaixo.
 
-When an `Activity` or `Fragment` expects arguments, it should provide a `public static` method that facilitates the creation of the relevant `Intent` or `Fragment`.
+Quando a `Activity` ou `Fragment` espera argumentos, deve ser provido um método `public static` para facilitar a criação da `Intent` ou `Fragment`.
 
+No caso de Activities o método é geralmente chamado `getStartIntent()`
 In the case of Activities the method is usually called `getStartIntent()`:
 
 ```java
@@ -429,7 +430,7 @@ public static Intent getStartIntent(Context context, User user) {
 }
 ```
 
-For Fragments it is named `newInstance()` and handles the creation of the Fragment with the right arguments:
+Para Fragments é nomeado `newInstance()` e controlam a criação do Fragment com os argumentos corretos:
 
 ```java
 public static UserFragment newInstance(User user) {
