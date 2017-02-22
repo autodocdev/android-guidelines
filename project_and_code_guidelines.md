@@ -442,47 +442,47 @@ public static UserFragment newInstance(User user) {
 }
 ```
 
-__Note 1__: These methods should go at the top of the class before `onCreate()`.
+__Note 1__: Esses métodos devem ficar no topo da classe antes do `onCreate()`.
 
-__Note 2__: If we provide the methods described above, the keys for extras and arguments should be `private` because there is not need for them to be exposed outside the class.
+__Note 2__: Se fornecemos os métodos descritos acima, as chaves para extras e argumentos devem ser `private` porque não há necessidade de serem expostos fora da classe.
 
-### 2.2.15 Line length limit
+### 2.2.15 Limite de tamanho de linha
 
-Code lines should not exceed __100 characters__. If the line is longer than this limit there are usually two options to reduce its length:
+Linhas de código não devem exceder __100 caracteres___. Se a linha é maior que o limite, existem duas opções para redução de seu tamanho:
 
-* Extract a local variable or method (preferable).
-* Apply line-wrapping to divide a single line into multiple ones.
+* Extrair uma variável ou método local (preferível).
+* Aplicar a quebra de linha para transformar em multiplas linhas.
 
-There are two __exceptions__ where it is possible to have lines longer than 100:
+Há duas __exceções__ onde é possível ter linhas com mais de 100:
 
-* Lines that are not possible to split, e.g. long URLs in comments.
-* `package` and `import` statements.
+* Linhas que não são possível dividir, e.g. URLs longas nos comentários
+* Declarações de `package` e `import`.
 
 #### 2.2.15.1 Line-wrapping strategies
 
-There isn't an exact formula that explains how to line-wrap and quite often different solutions are valid. However there are a few rules that can be applied to common cases.
+Não existe uma fórmula exata que explique como quebrar linhas e muitas vezes soluções diferentes são válidas. No entanto, existem algumas regras que podem ser aplicadas a casos comuns.
 
-__Break at operators__
+__Quebra nos operadores__
 
-When the line is broken at an operator, the break comes __before__ the operator. For example:
+Quando a linha é quebrada em um operador, a quebra vem __antes___ do operador. Por exemplo:
 
 ```java
 int longName = anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne
         + theFinalOne;
 ```
 
-__Assignment Operator Exception__
+__Exceção do Operador de Atribuição__
 
-An exception to the `break at operators` rule is the assignment operator `=`, where the line break should happen __after__ the operator.
+Uma exceção para `quebra de linha nos operadores` é quando utilizamos o operador `=`, neste caso a linha deve quebrar __depois__ do operador.
 
 ```java
 int longName =
         anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne + theFinalOne;
 ```
 
-__Method chain case__
+__Cadeia de métodos__
 
-When multiple methods are chained in the same line - for example when using Builders - every call to a method should go in its own line, breaking the line before the `.`
+Quando multiplos métodos são encadeados na mesma linha - por exemplo usando Builders - cada chamado para método deve ficar em sua própia linha, quebrando a linha antes do `.`
 
 ```java
 Picasso.with(context).load("http://ribot.co.uk/images/sexyjoe.jpg").into(imageView);
@@ -494,9 +494,9 @@ Picasso.with(context)
         .into(imageView);
 ```
 
-__Long parameters case__
+__Parâmetros longos__
 
-When a method has many parameters or its parameters are very long, we should break the line after every comma `,`
+Quando um método tem muitos parâmetros ou seus parâmetros são muito longos, neste caso devemos quebrar a linha a cada vírgula `,`
 
 ```java
 loadPicture(context, "http://ribot.co.uk/images/sexyjoe.jpg", mImageViewProfilePicture, clickListener, "Title of the picture");
@@ -510,9 +510,9 @@ loadPicture(context,
         "Title of the picture");
 ```
 
-### 2.2.16 RxJava chains styling
+### 2.2.16 Cadeia de operadores RxJava
 
-Rx chains of operators require line-wrapping. Every operator must go in a new line and the line should be broken before the `.`
+Encadeamento de operadores Rx requerem quebra de linha. Todo operador deve ficar em uma linha nova e deve ser quebrada antes do `.`
 
 ```java
 public Observable<Location> syncLocations() {
@@ -532,13 +532,13 @@ public Observable<Location> syncLocations() {
 }
 ```
 
-## 2.3 XML style rules
+## 2.3 Regras de estilos XML
 
-### 2.3.1 Use self closing tags
+### 2.3.1 Use a tag de fechamento automático
 
-When an XML element doesn't have any contents, you __must__ use self closing tags.
+Quando um elemente não tem conteúdo, você __deve__ utilizar a tag de fechamento automático.
 
-This is good:
+Isso é bom:
 
 ```xml
 <TextView
@@ -547,10 +547,10 @@ This is good:
 	android:layout_height="wrap_content" />
 ```
 
-This is __bad__ :
+Isso é __ruim__ :
 
 ```xml
-<!-- Don\'t do this! -->
+<!-- Não faça isso! -->
 <TextView
     android:id="@+id/text_view_profile"
     android:layout_width="wrap_content"
@@ -559,13 +559,13 @@ This is __bad__ :
 ```
 
 
-### 2.3.2 Resources naming
+### 2.3.2 Nomenado Resources
 
-Resource IDs and names are written in __lowercase_underscore__.
+Nome e IDs de Resources são escritos em __lowercase_underscore__.
 
-#### 2.3.2.1 ID naming
+#### 2.3.2.1 Nomeação de ID
 
-IDs should be prefixed with the name of the element in lowercase underscore. For example:
+IDs devem ser pré fixados com o nome do elemento em lowercase underscore. Por exemplo:
 
 
 | Element            | Prefix            |
@@ -575,7 +575,7 @@ IDs should be prefixed with the name of the element in lowercase underscore. For
 | `Button`             | `button_`           |
 | `Menu`               | `menu_`             |
 
-Image view example:
+Exemplo de Image view:
 
 ```xml
 <ImageView
@@ -584,7 +584,7 @@ Image view example:
     android:layout_height="wrap_content" />
 ```
 
-Menu example:
+Exemplo de Menu:
 
 ```xml
 <menu>
@@ -596,7 +596,7 @@ Menu example:
 
 #### 2.3.2.2 Strings
 
-String names start with a prefix that identifies the section they belong to. For example `registration_email_hint` or `registration_name_hint`. If a string __doesn't belong__ to any section, then you should follow the rules below:
+Nomes de String começam com um prefixo que identificam a seção que elas pertencem. Por exemplo `registration_email_hint` ou `registration_name_hint`. Se a string __não pertence__ a nenhuma seção, então você deve seguir as seguintes regras:
 
 
 | Prefix             | Description                           |
@@ -608,40 +608,40 @@ String names start with a prefix that identifies the section they belong to. For
 
 
 
-#### 2.3.2.3 Styles and Themes
+#### 2.3.2.3 Styles e Themes
 
-Unless the rest of resources, style names are written in __UpperCamelCase__.
+Nomes de estilos são escritos em __UpperCamelCase__.
 
-### 2.3.3 Attributes ordering
+### 2.3.3 Ordenação de Atributos
 
-As a general rule you should try to group similar attributes together. A good way of ordering the most common attributes is:
+Como regra geral você deve tentar agrupar atributos similares juntos. Uma boa maneira de ordenar os atributos mais comuns é:
 
 1. View Id
 2. Style
-3. Layout width and layout height
-4. Other layout attributes, sorted alphabetically
-5. Remaining attributes, sorted alphabetically
+3. Layout width e layout height
+4. Outros atributos de layout, ordenados alfabeticamente
+5. Atributos restantes, ordenados alfabeticamente
 
-## 2.4 Tests style rules
+## 2.4 Regras de Testes
 
 ### 2.4.1 Unit tests
 
-Test classes should match the name of the class the tests are targeting, followed by `Test`. For example, if we create a test class that contains tests for the `DatabaseHelper`, we should name it `DatabaseHelperTest`.
+Os nomes das classes de testes devem equivaler aos nomes das classes que serão testadas, seguindo pela palavra `Test`. Por exemplo, se criarmos uma classes de testes para testar a classe `DatabaseHelper`, nós devemos nomear para `DatabaseHelperTest`.
 
-Test methods are annotated with `@Test` and should generally start with the name of the method that is being tested, followed by a precondition and/or expected behaviour.
+Os métodos de teste são anotados com `@Test` e geralmente devem começar com o nome do método que está sendo testado, seguido por uma pré-condição e / ou comportamento esperado.
 
 * Template: `@Test void methodNamePreconditionExpectedBehaviour()`
 * Example: `@Test void signInWithEmptyEmailFails()`
 
-Precondition and/or expected behaviour may not always be required if the test is clear enough without them.
+A condição prévia e / ou o comportamento esperado podem nem sempre ser necessários se o teste for suficientemente claro sem eles.
 
-Sometimes a class may contain a large amount of methods, that at the same time require several tests for each method. In this case, it's recommendable to split up the test class into multiple ones. For example, if the `DataManager` contains a lot of methods we may want to divide it into `DataManagerSignInTest`, `DataManagerLoadUsersTest`, etc. Generally you will be able to see what tests belong together because they have common [test fixtures](https://en.wikipedia.org/wiki/Test_fixture).
+Às vezes, uma classe pode conter uma grande quantidade de métodos, que ao mesmo tempo exigem vários testes para cada método. Neste caso, é recomendável dividir a classe de teste em vários. Por exemplo, se o `DataManager` contiver muitos métodos, poderemos dividi-lo em` DataManagerSignInTest`, `DataManagerLoadUsersTest`, etc. Geralmente, você será capaz de ver quais testes pertencem juntos porque eles têm comum [test fixtures](https://en.wikipedia.org/wiki/Test_fixture).
 
 ### 2.4.2 Espresso tests
 
-Every Espresso test class usually targets an Activity, therefore the name should match the name of the targeted Activity followed by `Test`, e.g. `SignInActivityTest`
+Cada classe de teste do Espresso normalmente tem como alvo uma activity, portanto o nome deve corresponder ao nome da atividade segmentada seguida por `Test`, e.g. `SignInActivityTest`
 
-When using the Espresso API it is a common practice to place chained methods in new lines.
+Ao usar o Espresso API é uma prática comum colocar métodos encadeados em novas linhas.
 
 ```java
 onView(withId(R.id.view))
@@ -652,7 +652,7 @@ onView(withId(R.id.view))
 # License
 
 ```
-Copyright 2015 Ribot Ltd.
+Copyright 2017 Autodoc Ltd.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
