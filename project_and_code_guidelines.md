@@ -95,7 +95,7 @@ void setServerPort(String value) {
 }
 ```
 
-_Enquanto você pode pensar que seu código nunca irá encontrar esta condição de erro ou que não é importante para lidar com isso, ignorando exceções como acima cria "minas/armadilhas" em seu código para alguém tropeçar em algum dia. Você deve lidar com todas as exceções no seu código de alguma maneira com princípios. A manipulação específica varia de acordo com o caso._ - ([Android code style guidelines](https://source.android.com/source/code-style.html))
+_Você pode pensar que seu código nunca irá encontrar esta condição de erro ou que não é importante para lidar com isso, ignorando exceções como acima cria "minas/armadilhas" em seu código para alguém tropeçar em algum dia. Você deve lidar com todas as exceções no seu código de alguma maneira com princípios. A manipulação específica varia de acordo com o caso._ - ([Android code style guidelines](https://source.android.com/source/code-style.html))
 
 Veja alternativas [aqui](https://source.android.com/source/code-style.html#dont-ignore-exceptions).
 
