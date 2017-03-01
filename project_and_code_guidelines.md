@@ -391,12 +391,13 @@ Muitos elementos do SDK do Android como `SharedPreferences`, `Bundle`, ou `Inten
 Ao usar um desses componentes, você deve definir as chaves como campos `static final` e eles devem ser prefixados conforme indicado abaixo.
 
 | Elemento            | Prefix do nome de campo |
-| -----------------  | ----------------- |
+| -----------------  | ------------------- |
 | SharedPreferences  | `PREF_`             |
 | Bundle             | `BUNDLE_`           |
 | Fragment Arguments | `ARGUMENT_`         |
 | Intent Extra       | `EXTRA_`            |
 | Intent Action      | `ACTION_`           |
+| Bundle State       | `STATE_`            |
 
 Note que os argumentos de um Fragment - `Fragment.getArguments()` - também são um Bundle. Entretando, como é muito comum o uso de Bundles, nós definimos um prefixo diferente para eles.
 
@@ -406,6 +407,7 @@ Examplo:
 // Observe que o valor do campo é igual ao nome para evitar problemas de duplicação
 static final String PREF_EMAIL = "PREF_EMAIL";
 static final String BUNDLE_AGE = "BUNDLE_AGE";
+static final String STATE_IMAGE = "STATE_IMAGE";
 static final String ARGUMENT_USER_ID = "ARGUMENT_USER_ID";
 
 // Itens relacionados à intent usam o nome do pacote completo como valor
