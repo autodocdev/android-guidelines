@@ -116,19 +116,6 @@ try {
 
 Veja o porque e algumas alternativas [aqui](https://source.android.com/source/code-style.html#dont-catch-generic-exception)
 
-### 2.1.3 Don't use finalizers
-
-_Não usamos finalizers. Não há garantias quanto a quando um finalizer será chamado, ou mesmo que ele será chamado em tudo. Na maioria dos casos, você pode fazer o que você precisa de um finalizer com uma boa manipulação de exception. Se você absolutamente precisar dele, defina um método `close ()` (ou similar) e documente exatamente quando esse método precisa ser chamado. Veja `InputStream` para um exemplo. Nesse caso, é apropriado, mas não é necessário imprimir uma mensagem de log curto do finalizador, desde que não se espere que inunde os logs._ - ([Android code style guidelines](https://source.android.com/source/code-style.html#dont-use-finalizers))
-
-
-### 2.1.4 Fully qualify imports
-
-Isso é ruim: `import foo.*;`
-
-Isso é bom: `import foo.Bar;`
-
-Veja mais informações [aqui](https://source.android.com/source/code-style.html#fully-qualify-imports)
-
 ## 2.2 Java style rules
 
 ### 2.2.1 Definição de campos e nomenclatura
@@ -164,7 +151,7 @@ public class MyClass {
 
 ### 2.2.4 Use espaço para identação
 
-Use __4 espaços__ para identação de blocos:
+Use __4 espaços__ ou __1 tab__ para identação de blocos:
 
 ```java
 if (x == 1) {
@@ -172,7 +159,7 @@ if (x == 1) {
 }
 ```
 
-Use __8 space__ para identação de linhas quebradas:
+Use __8 space__ ou __2 tab__ para identação de linhas quebradas:
 
 ```java
 Instrument i =
@@ -218,7 +205,7 @@ if (condition)
 
 De acordo com o Android code style code, as praticas padões para algumas annotations predefinidas em java são:
 
-* `@Override`: A annotation @Override __deve ser usada__ sempre que um metodo overrides a declaração ou implementação da super-class. 
+* `@Override`: A annotation @Override __deve ser usada__ sempre que um metodo "override" a declaração ou implementação da super-class. 
 
 * `@SuppressWarnings`: A @SuppressWarnings annotation deve ser usada somente sobre circunstancia onde é impossível eliminar o warning.
 
@@ -236,7 +223,7 @@ Mais informações sobre annotation guidelines podem ser encontradas [aqui](http
 
 __Classes, Metodos e Construtores__
 
-Quando annotations são aplicata em uma classe, metodo, ou construtor, eles são listados após o bloco de documentação e devem aparecer como __uma annotation por linha__ .
+Quando annotations são aplicada em uma classe, metodo, ou construtor, eles são listados após o bloco de documentação e devem aparecer como __uma annotation por linha__ .
 
 ```java
 /* This is the documentation block about the class */
@@ -258,24 +245,6 @@ Annotations aplicadas em campos devem ser listadas __na mesma linha__, a menos q
 _O escopo das variáveis locais deve ser mantido ao mínimo (Item Java Eficaz 29). Ao fazer isso, você aumenta a legibilidade e a capacidade de manutenção do seu código e reduz a probabilidade de erro._
 
 _As variáveis locais devem ser declaradas no ponto em que são usadas pela primeira vez. Quase todas as declarações de variáveis locais devem conter um inicializador. Se ainda não tiver informações suficientes para inicializar uma variável de forma sensata, deverá adiar a declaração._ - ([Android code style guidelines](https://source.android.com/source/code-style.html#limit-variable-scope))
-
-### 2.2.8 Order import statements
-
-Se você estiver usando uma IDE como o Android Studio, não precisa se preocupar com isso porque sua IDE já está obedecendo a essas regras. Se não, dê uma olhada abaixo.
-
-A ordem das declarações de importação é:
-
-1. Android imports
-2. Importação de terceiros (com, junit, net, org)
-3. java and javax
-4. Importações do mesmo projeto
-
-Para corresponder exatamente às configurações IDE, as importações devem ser:
-
-* Ordem alfabética dentro de cada agrupamento, com letras maiúsculas antes de letras minúsculas (por exemplo, Z antes de a).
-* Deve haver uma linha em branco entre cada grande agrupamento (android, com, junit, net, org, java, javax).
-
-Mais informações [here](https://source.android.com/source/code-style.html#limit-variable-scope)
 
 ### 2.2.9 Logging guidelines
 
@@ -314,10 +283,12 @@ Não existe uma única solução para isso, mas usando uma ordenação __lógica
 1. Constants
 2. Fields
 3. Constructors
-4. Override methods and callbacks (public or private)
-5. Public methods
-6. Private methods
-7. Inner classes or interfaces
+4. Lifecycle methods (onCreate(), onStart())
+5. Initilizers (initializeToolbar())
+6. Override methods and callbacks (public or private)
+7. Public methods
+8. Private methods
+9. Inner classes or interfaces
 
 Example:
 
@@ -384,7 +355,7 @@ public User loadUser(Context context, int userId);
 public void loadUserAsync(Context context, int userId, UserCallback callback);
 ```
 
-### 2.2.13 String constants, naming, and values
+### 2.2.13 Constantes Strings, nomes e valores
 
 Muitos elementos do SDK do Android como `SharedPreferences`, `Bundle`, ou `Intent` usam par de chave-valor, por isso é muito provável que mesmo para um pequeno aplicativo que você acaba escrevendo um monte de constantes String. 
 
@@ -421,8 +392,7 @@ Quando um dado é passado para uma `Activity` ou `Fragment` via `Intent` ou um `
 
 Quando a `Activity` ou `Fragment` espera argumentos, deve ser provido um método `public static` para facilitar a criação da `Intent` ou `Fragment`.
 
-No caso de Activities o método é geralmente chamado `getStartIntent()`
-In the case of Activities the method is usually called `getStartIntent()`:
+No caso de Activities o método é geralmente chamado `getStartIntent()`:
 
 ```java
 public static Intent getStartIntent(Context context, User user) {
@@ -450,7 +420,7 @@ __Note 2__: Se fornecemos os métodos descritos acima, as chaves para extras e a
 
 ### 2.2.15 Limite de tamanho de linha
 
-Linhas de código não devem exceder __100 caracteres___. Se a linha é maior que o limite, existem duas opções para redução de seu tamanho:
+Linhas de código não devem exceder __200 caracteres___. Se a linha é maior que o limite, existem duas opções para redução de seu tamanho:
 
 * Extrair uma variável ou método local (preferível).
 * Aplicar a quebra de linha para transformar em multiplas linhas.
@@ -460,13 +430,13 @@ Há duas __exceções__ onde é possível ter linhas com mais de 100:
 * Linhas que não são possível dividir, e.g. URLs longas nos comentários
 * Declarações de `package` e `import`.
 
-#### 2.2.15.1 Line-wrapping strategies
+#### 2.2.15.1 Estratégias de quebra de linha
 
 Não existe uma fórmula exata que explique como quebrar linhas e muitas vezes soluções diferentes são válidas. No entanto, existem algumas regras que podem ser aplicadas a casos comuns.
 
 __Quebra nos operadores__
 
-Quando a linha é quebrada em um operador, a quebra vem __antes___ do operador. Por exemplo:
+Quando a linha é quebrada em um operador, a quebra vem __antes__ do operador. Por exemplo:
 
 ```java
 int longName = anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne
@@ -603,26 +573,16 @@ Nomes de String começam com um prefixo que identificam a seção que elas perte
 
 | Prefix             | Description                           |
 | -----------------  | --------------------------------------|
-| `error_`             | An error message                      |
-| `msg_`               | A regular information message         |
-| `title_`             | A title, i.e. a dialog title          |
-| `action_`            | An action such as "Save" or "Create"  |
+| `error_`             | Uma mensagem de erro                      |
+| `msg_`               | Uma mensagem comum         |
+| `title_`             | Um titulo, i.e. um dialog          |
+| `action_`            | Uma ação como "Salvar" or "Exclui"  |
 
 
 
 #### 2.3.2.3 Styles e Themes
 
 Nomes de estilos são escritos em __UpperCamelCase__.
-
-### 2.3.3 Ordenação de Atributos
-
-Como regra geral você deve tentar agrupar atributos similares juntos. Uma boa maneira de ordenar os atributos mais comuns é:
-
-1. View Id
-2. Style
-3. Layout width e layout height
-4. Outros atributos de layout, ordenados alfabeticamente
-5. Atributos restantes, ordenados alfabeticamente
 
 ## 2.4 Regras de Testes
 
